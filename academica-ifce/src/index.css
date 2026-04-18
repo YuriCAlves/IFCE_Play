@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* ============================================
+   Academica IFCE — Tema e Variáveis Globais
+   ============================================ */
+
+@theme {
+  --color-primary: #1B5E20;
+  --color-primary-light: #2E7D32;
+  --color-primary-bg: #F1F8E9;
+  --color-primary-bg-light: #E8F5E9;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F5F5F5;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B7280;
+  --color-alert-red: #D32F2F;
+  --color-alert-red-bg: #FFEBEE;
+  --color-maintenance-bg: #FCE4EC;
+  --color-confirmed: #1B5E20;
+  --color-pending: #6B7280;
+  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================
+   Reset e Base
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-alt);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Scrollbar Personalizada
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* ============================================
+   Animação do Badge LIVE
+   ============================================ */
+
+@keyframes pulse-live {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-live {
+  animation: pulse-live 2s ease-in-out infinite;
+}
+
+/* ============================================
+   Transições suaves para a sidebar
+   ============================================ */
+
+.sidebar-transition {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   Estilos do calendário semanal
+   ============================================ */
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 60px repeat(5, 1fr);
+  position: relative;
+}
+
+.time-slot {
+  border-bottom: 1px solid #f0f0f0;
+  min-height: 60px;
+  position: relative;
+}
+
+.reservation-block {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.reservation-block:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
