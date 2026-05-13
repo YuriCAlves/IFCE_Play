@@ -312,14 +312,11 @@ export const statusEspacoLabels: Record<StatusEspaco, string> = {
 // Itens do menu da sidebar
 // ============================================
 export const menuItemsGestor = [
-  { id: 'dashboard', label: 'Dashboard', rota: '/dashboard', icone: 'LayoutDashboard' },
   { id: 'espacos', label: 'Espaços', rota: '/espacos', icone: 'Building2' },
   { id: 'reservas', label: 'Reservas', rota: '/reservas', icone: 'CalendarDays' },
-  { id: 'solicitacoes', label: 'Solicitações', rota: '/solicitacoes', icone: 'ClipboardList', badge: 2 },
 ]
 
 export const menuItemsUsuario = [
-  { id: 'dashboard', label: 'Dashboard', rota: '/dashboard', icone: 'LayoutDashboard' },
   { id: 'espacos', label: 'Catálogo', rota: '/espacos', icone: 'Building2' },
   { id: 'reservas', label: 'Reservas', rota: '/reservas', icone: 'CalendarDays' },
   { id: 'minhas-reservas', label: 'Minhas Reservas', rota: '/minhas-reservas', icone: 'BookOpen' },

@@ -1,9 +1,9 @@
 import { useState, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../context/AuthContext'
 import { GraduationCap, Mail, Lock, AlertCircle } from 'lucide-react'
-import Input from '../../components/ui/Input'
-import Button from '../../components/ui/Button'
+import Input from '../components/ui/Input'
+import Button from '../components/ui/Button'
 
 export default function Login() {
   const [email, setEmail] = useState('')

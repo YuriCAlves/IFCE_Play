@@ -1,13 +1,16 @@
-import { type InputHTMLAttributes, forwardRef } from 'react'
+import { type InputHTMLAttributes, type ReactNode, forwardRef } from 'react'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  /** Rótulo exibido acima do campo */
   label?: string
+  /** Mensagem de erro (exibida em vermelho abaixo do campo) */
   error?: string
-  icon?: React.ReactNode
+  /** Ícone Lucide opcional à esquerda do campo */
+  icon?: ReactNode
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, icon, className = '', id, ...props }, ref) => {
+  ({ label, error, icon, className = '', id, disabled, ...props }, ref) => {
     const inputId = id || label?.toLowerCase().replace(/\s+/g, '-')
 
     return (
@@ -15,37 +18,40 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-sm font-medium text-neutral-700"
+            className="text-sm font-medium text-gray-700"
           >
             {label}
           </label>
         )}
         <div className="relative">
           {icon && (
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400">
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
               {icon}
             </div>
           )}
           <input
             ref={ref}
             id={inputId}
+            disabled={disabled}
             className={`
               w-full px-4 py-2.5 text-sm rounded-lg border
               transition-all duration-200 outline-none
-              bg-white text-neutral-800 placeholder:text-neutral-400
+              bg-white text-gray-800 placeholder:text-gray-400
               ${icon ? 'pl-10' : ''}
               ${error
                 ? 'border-danger-500 focus:ring-2 focus:ring-danger-500/20 focus:border-danger-500'
-                : 'border-neutral-300 focus:ring-2 focus:ring-ifce-500/20 focus:border-ifce-600'
+                : 'border-gray-300 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-600'
               }
-              disabled:bg-neutral-100 disabled:text-neutral-400 disabled:cursor-not-allowed
+              disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed
               ${className}
             `}
             {...props}
           />
         </div>
         {error && (
-          <span className="text-xs text-danger-600 animate-fade-in">{error}</span>
+          <span className="text-xs text-danger-600 animate-fade-in" role="alert">
+            {error}
+          </span>
         )}
       </div>
     )

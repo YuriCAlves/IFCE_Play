@@ -3,9 +3,13 @@ import type { StatusReserva, StatusEspaco } from '../../data/mockData'
 type BadgeVariant = 'success' | 'warning' | 'danger' | 'info' | 'neutral' | 'purple'
 
 interface BadgeProps {
+  /** Variante visual */
   variant?: BadgeVariant
-  children: React.ReactNode
+  /** Ou passa o status diretamente e o Badge mapeia sozinho */
+  status?: StatusReserva
+  children?: React.ReactNode
   size?: 'sm' | 'md'
+  /** Exibe bolinha colorida à esquerda */
   dot?: boolean
 }
 
@@ -14,8 +18,8 @@ const variantClasses: Record<BadgeVariant, string> = {
   warning: 'bg-warning-50 text-warning-600 border-warning-500/20',
   danger: 'bg-danger-50 text-danger-700 border-danger-500/20',
   info: 'bg-info-50 text-info-600 border-info-500/20',
-  neutral: 'bg-neutral-100 text-neutral-600 border-neutral-300/30',
-  purple: 'bg-purple-50 text-purple-700 border-purple-500/20',
+  neutral: 'bg-gray-100 text-gray-600 border-gray-300/30',
+  purple: 'bg-[#faf5ff] text-[#7e22ce] border-[#a855f7]/20',
 }
 
 const dotColors: Record<BadgeVariant, string> = {
@@ -23,44 +27,62 @@ const dotColors: Record<BadgeVariant, string> = {
   warning: 'bg-warning-500',
   danger: 'bg-danger-600',
   info: 'bg-info-500',
-  neutral: 'bg-neutral-400',
-  purple: 'bg-purple-500',
+  neutral: 'bg-gray-400',
+  purple: 'bg-[#a855f7]',
+}
+
+/** Mapeia StatusReserva → BadgeVariant conforme especificação */
+const statusReservaMap: Record<StatusReserva, BadgeVariant> = {
+  PENDENTE: 'warning',
+  APROVADA: 'success',
+  REJEITADA: 'danger',
+  CANCELADA: 'neutral',
+}
+
+/** Labels em português para exibir no badge */
+const statusReservaLabels: Record<StatusReserva, string> = {
+  PENDENTE: 'Pendente',
+  APROVADA: 'Aprovada',
+  REJEITADA: 'Rejeitada',
+  CANCELADA: 'Cancelada',
 }
 
 export default function Badge({
-  variant = 'neutral',
+  variant,
+  status,
   children,
   size = 'sm',
   dot = false,
 }: BadgeProps) {
+  // Se receber status, resolve variante e label automaticamente
+  const resolvedVariant = variant || (status ? statusReservaMap[status] : 'neutral')
+  const resolvedChildren = children || (status ? statusReservaLabels[status] : '')
+
   return (
     <span
       className={`
         inline-flex items-center gap-1.5 font-medium rounded-full border
         ${size === 'sm' ? 'px-2.5 py-0.5 text-xs' : 'px-3 py-1 text-sm'}
-        ${variantClasses[variant]}
+        ${variantClasses[resolvedVariant]}
       `}
     >
       {dot && (
-        <span className={`w-1.5 h-1.5 rounded-full ${dotColors[variant]}`} />
+        <span
+          className={`w-1.5 h-1.5 rounded-full ${dotColors[resolvedVariant]}`}
+          aria-hidden="true"
+        />
       )}
-      {children}
+      {resolvedChildren}
     </span>
   )
 }
 
-// Helper para mapear status de reserva para variante de badge
+// ── Helpers para uso externo ────────────────────────────────
+
 export function getStatusReservaVariant(status: StatusReserva): BadgeVariant {
-  const map: Record<StatusReserva, BadgeVariant> = {
-    PENDENTE: 'purple',
-    APROVADA: 'success',
-    REJEITADA: 'danger',
-    CANCELADA: 'neutral',
-  }
-  return map[status]
+  return statusReservaMap[status]
 }
 
-// Helper para mapear status de espaço para variante de badge
 export function getStatusEspacoVariant(status: StatusEspaco): BadgeVariant {
   const map: Record<StatusEspaco, BadgeVariant> = {
     DISPONIVEL: 'success',

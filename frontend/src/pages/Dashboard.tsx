@@ -1,15 +1,15 @@
 import { Building2, CalendarCheck, AlertTriangle, TrendingUp } from 'lucide-react'
-import Card from '../../components/ui/Card'
-import Badge from '../../components/ui/Badge'
-import { useAuth } from '../../context/AuthContext'
+import Card from '../components/ui/Card'
+import Badge from '../components/ui/Badge'
+import { useAuth } from '../context/AuthContext'
 import {
   espacos,
   reservas,
   usuarios,
   statusReservaLabels,
   tipoEspacoLabels,
-} from '../../data/mockData'
-import { getStatusReservaVariant } from '../../components/ui/Badge'
+} from '../data/mockData'
+import { getStatusReservaVariant } from '../components/ui/Badge'
 
 export default function Dashboard() {
   const { usuario } = useAuth()
