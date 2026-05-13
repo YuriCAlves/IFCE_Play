@@ -2,17 +2,11 @@ import { type ReactNode, useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 
 interface ModalProps {
-  /** Controla visibilidade */
   isOpen: boolean
-  /** Callback ao fechar (ESC, clique fora ou botão X) */
-  onClose: () => void
-  /** Título exibido no header */
+  onClose: () => void // Função chamada ao fechar o modal
   title: string
-  /** Conteúdo principal */
   children: ReactNode
-  /** Conteúdo do rodapé (ex: botões de ação) */
-  footer?: ReactNode
-  /** Largura do modal */
+  footer?: ReactNode // Área opcional para botões de ação no rodapé
   size?: 'sm' | 'md' | 'lg'
 }
 
@@ -32,7 +26,7 @@ export default function Modal({
 }: ModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
 
-  // Bloqueia scroll do body
+  // Evita que o fundo da página role enquanto o modal está aberto
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -42,7 +36,7 @@ export default function Modal({
     return () => { document.body.style.overflow = '' }
   }, [isOpen])
 
-  // Fecha com ESC
+  // Fecha o modal automaticamente ao pressionar a tecla ESC
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -51,7 +45,7 @@ export default function Modal({
     return () => window.removeEventListener('keydown', handleEsc)
   }, [isOpen, onClose])
 
-  // Focus trap: foca o dialog ao abrir
+  // Garante que o foco vá para o modal assim que ele for aberto
   useEffect(() => {
     if (isOpen && dialogRef.current) {
       dialogRef.current.focus()
@@ -67,14 +61,12 @@ export default function Modal({
       aria-modal="true"
       aria-labelledby="modal-title"
     >
-      {/* Overlay escuro com fade */}
       <div
         className="absolute inset-0 bg-black/50 animate-fade-in"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Conteúdo do modal */}
       <div
         ref={dialogRef}
         tabIndex={-1}
@@ -86,7 +78,6 @@ export default function Modal({
           outline-none
         `}
       >
-        {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
           <h2 id="modal-title" className="text-lg font-semibold text-gray-800">
             {title}
@@ -100,12 +91,10 @@ export default function Modal({
           </button>
         </div>
 
-        {/* Body */}
         <div className="px-6 py-5 overflow-y-auto flex-1">
           {children}
         </div>
 
-        {/* Footer (opcional) */}
         {footer && (
           <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-gray-200 bg-gray-50/50 rounded-b-2xl">
             {footer}

@@ -2,14 +2,10 @@ import { type ReactNode } from 'react'
 import { Inbox } from 'lucide-react'
 
 interface EmptyStateProps {
-  /** Ícone Lucide (default: Inbox) */
-  icon?: ReactNode
-  /** Título principal */
+  icon?: ReactNode // Ícone a ser exibido (padrão é o Inbox)
   title: string
-  /** Descrição de apoio */
   description?: string
-  /** Botão de ação opcional (ex: <Button>Criar</Button>) */
-  action?: ReactNode
+  action?: ReactNode // Elemento de ação opcional (ex: um botão de "Criar")
 }
 
 export default function EmptyState({

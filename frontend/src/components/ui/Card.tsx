@@ -3,12 +3,9 @@ import { type ReactNode, type KeyboardEvent } from 'react'
 interface CardProps {
   children: ReactNode
   className?: string
-  /** Ativa hover effect (elevação + leve translate) */
-  hover?: boolean
-  /** Padding interno */
+  hover?: boolean // Ativa o efeito visual de elevação ao passar o mouse
   padding?: 'sm' | 'md' | 'lg'
-  /** Torna o card clicável com hover visual e acessibilidade */
-  onClick?: () => void
+  onClick?: () => void // Torna o card interativo e clicável
 }
 
 const paddingClasses = {
@@ -26,6 +23,7 @@ export default function Card({
 }: CardProps) {
   const isClickable = !!onClick || hover
 
+  // Permite que o card seja "clicado" usando o teclado (Enter ou Espaço)
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (onClick && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault()

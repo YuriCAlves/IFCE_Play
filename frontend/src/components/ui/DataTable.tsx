@@ -1,30 +1,21 @@
 import { type ReactNode } from 'react'
 
 interface Column<T> {
-  /** Chave para acessar o campo no objeto (ou identificador se usar render) */
-  key: string
-  /** Label exibido no header da tabela */
-  label: string
-  /** Render customizado para a célula */
-  render?: (item: T) => ReactNode
-  /** Classes CSS extras para header e cells desta coluna */
+  key: string // Identificador único da coluna
+  label: string // Texto exibido no cabeçalho
+  render?: (item: T) => ReactNode // Função opcional para customizar a célula
   className?: string
 }
 
 interface DataTableProps<T> {
   columns: Column<T>[]
   data: T[]
-  /** Extrai chave única de cada item */
-  keyExtractor: (item: T) => string | number
-  /** Exibe skeleton rows ao carregar */
+  keyExtractor: (item: T) => string | number // Função para definir a chave única de cada linha
   loading?: boolean
-  /** Mensagem quando data está vazia (e não loading) */
   emptyMessage?: string
-  /** Torna linhas clicáveis */
   onRowClick?: (item: T) => void
 }
 
-/** Linha skeleton para estado de carregamento */
 function SkeletonRow({ cols }: { cols: number }) {
   return (
     <tr className="animate-pulse-soft">
@@ -45,7 +36,7 @@ export default function DataTable<T>({
   emptyMessage = 'Nenhum dado encontrado.',
   onRowClick,
 }: DataTableProps<T>) {
-  // Estado de loading: exibe 5 skeleton rows
+  // Mostra linhas de carregamento (skeleton) enquanto os dados não chegam
   if (loading) {
     return (
       <div className="overflow-x-auto rounded-xl border border-gray-200">
@@ -72,7 +63,7 @@ export default function DataTable<T>({
     )
   }
 
-  // Estado vazio
+  // Feedback visual caso não existam dados para exibir
   if (data.length === 0) {
     return (
       <div className="text-center py-12 text-gray-400">
@@ -81,7 +72,6 @@ export default function DataTable<T>({
     )
   }
 
-  // Tabela com dados
   return (
     <div className="overflow-x-auto rounded-xl border border-gray-200">
       <table className="w-full text-sm">

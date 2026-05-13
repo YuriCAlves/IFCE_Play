@@ -1,16 +1,14 @@
 import { type InputHTMLAttributes, type ReactNode, forwardRef } from 'react'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  /** Rótulo exibido acima do campo */
   label?: string
-  /** Mensagem de erro (exibida em vermelho abaixo do campo) */
-  error?: string
-  /** Ícone Lucide opcional à esquerda do campo */
-  icon?: ReactNode
+  error?: string // Mensagem de validação exibida abaixo do campo
+  icon?: ReactNode // Ícone opcional exibido no início do input
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, error, icon, className = '', id, disabled, ...props }, ref) => {
+    // Gera um ID amigável baseado no label se nenhum for fornecido
     const inputId = id || label?.toLowerCase().replace(/\s+/g, '-')
 
     return (

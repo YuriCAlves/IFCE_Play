@@ -32,7 +32,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
 
   return (
     <>
-      {/* Overlay mobile */}
+      {/* Overlay escuro que aparece no mobile ao abrir o menu */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/40 z-40 lg:hidden animate-fade-in"
@@ -47,7 +47,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
           ${isOpen ? 'w-64 translate-x-0' : 'w-64 -translate-x-full lg:w-20 lg:translate-x-0'}
         `}
       >
-        {/* Logo */}
+        {/* Identidade do sistema */}
         <div className="flex items-center gap-3 px-5 h-16 border-b border-neutral-200 shrink-0">
           <div className="w-9 h-9 rounded-xl bg-ifce-900 flex items-center justify-center shrink-0">
             <GraduationCap size={20} className="text-white" />
@@ -58,7 +58,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
           </div>
         </div>
 
-        {/* Nav */}
+        {/* Links de navegação baseados no perfil do usuário */}
         <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
           {menuItems.map(item => {
             const isActive = location.pathname === item.rota
@@ -97,7 +97,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
           })}
         </nav>
 
-        {/* Collapse button (desktop only) */}
+        {/* Botão para recolher a barra lateral (apenas visível em desktop) */}
         <div className="hidden lg:block border-t border-neutral-200 p-3">
           <button
             onClick={onToggle}

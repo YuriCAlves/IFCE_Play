@@ -5,12 +5,9 @@ type Variant = 'primary' | 'secondary' | 'danger' | 'ghost'
 type Size = 'sm' | 'md' | 'lg'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Estilo visual do botão */
   variant?: Variant
-  /** Tamanho do botão */
   size?: Size
-  /** Exibe spinner e desabilita interações */
-  loading?: boolean
+  loading?: boolean // Desativa interações e mostra o ícone de carregamento
 }
 
 const variantClasses: Record<Variant, string> = {

@@ -3,14 +3,11 @@ import type { StatusReserva, StatusEspaco } from '../../data/mockData'
 type BadgeVariant = 'success' | 'warning' | 'danger' | 'info' | 'neutral' | 'purple'
 
 interface BadgeProps {
-  /** Variante visual */
   variant?: BadgeVariant
-  /** Ou passa o status diretamente e o Badge mapeia sozinho */
-  status?: StatusReserva
+  status?: StatusReserva // O badge pode mapear o status automaticamente
   children?: React.ReactNode
   size?: 'sm' | 'md'
-  /** Exibe bolinha colorida à esquerda */
-  dot?: boolean
+  dot?: boolean // Bolinha colorida lateral
 }
 
 const variantClasses: Record<BadgeVariant, string> = {
@@ -31,7 +28,6 @@ const dotColors: Record<BadgeVariant, string> = {
   purple: 'bg-[#a855f7]',
 }
 
-/** Mapeia StatusReserva → BadgeVariant conforme especificação */
 const statusReservaMap: Record<StatusReserva, BadgeVariant> = {
   PENDENTE: 'warning',
   APROVADA: 'success',
@@ -39,7 +35,6 @@ const statusReservaMap: Record<StatusReserva, BadgeVariant> = {
   CANCELADA: 'neutral',
 }
 
-/** Labels em português para exibir no badge */
 const statusReservaLabels: Record<StatusReserva, string> = {
   PENDENTE: 'Pendente',
   APROVADA: 'Aprovada',
@@ -54,7 +49,7 @@ export default function Badge({
   size = 'sm',
   dot = false,
 }: BadgeProps) {
-  // Se receber status, resolve variante e label automaticamente
+  // Define a aparência baseada na variante escolhida ou no status da reserva
   const resolvedVariant = variant || (status ? statusReservaMap[status] : 'neutral')
   const resolvedChildren = children || (status ? statusReservaLabels[status] : '')
 
@@ -77,8 +72,7 @@ export default function Badge({
   )
 }
 
-// ── Helpers para uso externo ────────────────────────────────
-
+// Funções para ajudar a definir as cores em outros componentes
 export function getStatusReservaVariant(status: StatusReserva): BadgeVariant {
   return statusReservaMap[status]
 }

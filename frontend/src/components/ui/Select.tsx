@@ -6,13 +6,9 @@ interface Option {
 }
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  /** Rótulo exibido acima do campo */
   label?: string
-  /** Lista de opções */
-  options: Option[]
-  /** Texto exibido quando nenhum valor está selecionado */
-  placeholder?: string
-  /** Mensagem de erro */
+  options: Option[] // Lista de opções a serem exibidas no dropdown
+  placeholder?: string // Texto padrão quando nada foi selecionado
   error?: string
 }
 
