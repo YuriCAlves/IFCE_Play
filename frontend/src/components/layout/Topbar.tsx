@@ -1,6 +1,7 @@
-import { Menu, LogOut, Bell } from 'lucide-react'
+import { Menu, LogOut, Search } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import NotificationPanel from './NotificationPanel'
 
 interface TopbarProps {
   onMenuToggle: () => void
@@ -22,50 +23,61 @@ export default function Topbar({ onMenuToggle }: TopbarProps) {
   }
 
   return (
-    <header className="sticky top-0 z-30 h-16 bg-white/90 backdrop-blur-md border-b border-neutral-200 flex items-center justify-between px-4 lg:px-6">
+    <header className="sticky top-0 z-30 h-20 bg-white/80 backdrop-blur-md border-b border-neutral-100 flex items-center justify-between px-4 lg:px-8 shrink-0">
       {/* Left */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 lg:hidden">
         <button
           onClick={onMenuToggle}
-          className="p-2 rounded-lg text-neutral-500 hover:bg-neutral-100 hover:text-neutral-700 transition-colors lg:hidden cursor-pointer"
+          className="p-2.5 rounded-xl bg-white border border-neutral-200 text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 transition-colors cursor-pointer shadow-sm"
           aria-label="Abrir menu"
         >
-          <Menu size={22} />
+          <Menu size={20} />
         </button>
-        <div className="hidden sm:block">
-          <h2 className="text-sm font-semibold text-neutral-800">
-            Bem-vindo, {usuario?.nome.split(' ')[0]} 👋
-          </h2>
-          <p className="text-xs text-neutral-400">
-            {perfilLabel[usuario?.perfil || 'ALUNO']} — Campus Fortaleza
-          </p>
+      </div>
+
+      {/* Center: Search Bar */}
+      <div className="hidden md:flex flex-1 max-w-xl mx-8">
+        <div className="relative w-full">
+          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+            <Search size={18} className="text-neutral-400" />
+          </div>
+          <input
+            type="text"
+            className="block w-full pl-10 pr-4 py-2.5 bg-neutral-100/50 border border-neutral-200 rounded-full text-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-neutral-700"
+            placeholder="Buscar espaços..."
+          />
         </div>
       </div>
 
       {/* Right */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4 ml-auto">
         {/* Notificações */}
-        <button className="relative p-2 rounded-lg text-neutral-400 hover:bg-neutral-100 hover:text-neutral-600 transition-colors cursor-pointer">
-          <Bell size={20} />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-danger-500 rounded-full" />
-        </button>
+        <NotificationPanel />
+
+        {/* Separator */}
+        <div className="w-px h-8 bg-neutral-200 hidden sm:block"></div>
 
         {/* Avatar + Info */}
-        <div className="flex items-center gap-3 pl-3 border-l border-neutral-200">
+        <div className="flex items-center gap-3">
           <div className="hidden sm:block text-right">
-            <p className="text-sm font-medium text-neutral-700 leading-tight">
+            <p className="text-sm font-bold text-neutral-800 leading-tight">
               {usuario?.nome}
             </p>
-            <p className="text-xs text-neutral-400">{usuario?.email}</p>
+            <p className="text-xs font-medium text-neutral-500">{perfilLabel[usuario?.perfil || 'ALUNO']}</p>
           </div>
-          <img
-            src={usuario?.avatar}
-            alt={usuario?.nome}
-            className="w-9 h-9 rounded-full ring-2 ring-ifce-100 object-cover"
-          />
+          
+          <div className="relative">
+            <img
+              src={usuario?.avatar}
+              alt={usuario?.nome}
+              className="w-10 h-10 rounded-full ring-2 ring-white shadow-sm object-cover"
+            />
+            <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
+          </div>
+          
           <button
             onClick={handleLogout}
-            className="p-2 rounded-lg text-neutral-400 hover:bg-danger-50 hover:text-danger-600 transition-colors cursor-pointer"
+            className="p-2 rounded-full text-neutral-400 hover:bg-danger-50 hover:text-danger-600 transition-colors cursor-pointer hidden sm:block ml-1"
             title="Sair"
           >
             <LogOut size={18} />
