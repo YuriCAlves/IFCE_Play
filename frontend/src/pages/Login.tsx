@@ -29,7 +29,7 @@ export default function Login() {
 
     const success = login(email, senha)
     if (success) {
-      navigate('/dashboard')
+      navigate('/espacos')
     } else {
       setError('E-mail ou senha incorretos.')
     }
@@ -108,7 +108,7 @@ export default function Login() {
               placeholder="seu.email@ifce.edu.br"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              icon={<Mail size={18} />}
+              icon={<Mail size={30} />}
             />
 
             <Input
@@ -117,7 +117,7 @@ export default function Login() {
               placeholder="••••••••"
               value={senha}
               onChange={e => setSenha(e.target.value)}
-              icon={<Lock size={18} />}
+              icon={<Lock size={20} />}
             />
 
             <Button

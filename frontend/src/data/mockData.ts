@@ -52,12 +52,12 @@ export interface Reserva {
 export const usuarios: Usuario[] = [
   {
     id: 1,
-    nome: 'Dr. Carlos Administrador',
+    nome: 'Admin',
     email: 'admin@ifce.edu.br',
     senha: 'admin123',
     perfil: 'GESTOR',
     matricula: '2024001',
-    avatar: 'https://i.pravatar.cc/40?img=12',
+    avatar: 'https://ui-avatars.com/api/?name=Admin&background=006335&color=fff',
   },
   {
     id: 2,
@@ -66,34 +66,16 @@ export const usuarios: Usuario[] = [
     senha: 'prof123',
     perfil: 'PROFESSOR',
     matricula: '2024002',
-    avatar: 'https://i.pravatar.cc/40?img=3',
-  },
-  {
-    id: 3,
-    nome: 'Profa. Aline Souza',
-    email: 'aline@ifce.edu.br',
-    senha: 'prof123',
-    perfil: 'PROFESSOR',
-    matricula: '2024003',
-    avatar: 'https://i.pravatar.cc/40?img=5',
+    avatar: 'https://ui-avatars.com/api/?name=Marcos&background=0284c7&color=fff',
   },
   {
     id: 4,
-    nome: 'João Pedro Silva',
-    email: 'joao@aluno.ifce.edu.br',
+    nome: 'Carlos Silva',
+    email: 'carlos@aluno.ifce.edu.br',
     senha: 'aluno123',
     perfil: 'ALUNO',
     matricula: '2024101',
-    avatar: 'https://i.pravatar.cc/40?img=8',
-  },
-  {
-    id: 5,
-    nome: 'Maria Clara Oliveira',
-    email: 'maria@aluno.ifce.edu.br',
-    senha: 'aluno123',
-    perfil: 'ALUNO',
-    matricula: '2024102',
-    avatar: 'https://i.pravatar.cc/40?img=9',
+    avatar: 'https://ui-avatars.com/api/?name=Carlos+Silva&background=eab308&color=fff',
   },
 ]
 
@@ -313,13 +295,13 @@ export const statusEspacoLabels: Record<StatusEspaco, string> = {
 // ============================================
 export const menuItemsGestor = [
   { id: 'espacos', label: 'Espaços', rota: '/espacos', icone: 'Building2' },
-  { id: 'reservas', label: 'Reservas', rota: '/reservas', icone: 'CalendarDays' },
+  { id: 'solicitacao', label: 'Solicitação', rota: '/solicitacao', icone: 'ClipboardList' },
+  { id: 'ja-reservados', label: 'Já Reservados', rota: '/ja-reservados', icone: 'CalendarDays' },
 ]
 
 export const menuItemsUsuario = [
-  { id: 'espacos', label: 'Catálogo', rota: '/espacos', icone: 'Building2' },
-  { id: 'reservas', label: 'Reservas', rota: '/reservas', icone: 'CalendarDays' },
-  { id: 'minhas-reservas', label: 'Minhas Reservas', rota: '/minhas-reservas', icone: 'BookOpen' },
+  { id: 'espacos', label: 'Espaços', rota: '/espacos', icone: 'Building2' },
+  { id: 'ja-reservados', label: 'Já Reservados', rota: '/ja-reservados', icone: 'CalendarDays' },
 ]
 
 // ============================================
