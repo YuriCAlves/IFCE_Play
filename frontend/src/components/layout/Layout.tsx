@@ -9,18 +9,24 @@ export default function Layout() {
   const toggleSidebar = () => setSidebarOpen(prev => !prev)
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 flex">
       <Sidebar isOpen={sidebarOpen} onToggle={toggleSidebar} />
 
+      {/* 
+        Conteúdo principal — margem dinâmica que acompanha a sidebar.
+        Em mobile a sidebar é um drawer (overlay), então sem margem.
+        Em desktop (lg+), a margem acompanha a largura da sidebar.
+      */}
       <div
         className={`
-          transition-all duration-300
-          ${sidebarOpen ? 'lg:ml-64' : 'lg:ml-20'}
+          flex-1 min-w-0 flex flex-col
+          transition-[padding] duration-300 ease-out
+          ${sidebarOpen ? 'lg:pl-64' : 'lg:pl-20'}
         `}
       >
         <Topbar onMenuToggle={toggleSidebar} />
 
-        <main className="p-4 lg:p-6 animate-fade-in">
+        <main className="flex-1 p-4 md:p-6 xl:p-8 animate-fade-in">
           <Outlet />
         </main>
       </div>

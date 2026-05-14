@@ -1,0 +1,30 @@
+{
+  "name": "ifce-play-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.337.0",
+    "@tanstack/react-query": "^5.0.0",
+    "axios": "^1.7.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.7",
+    "typescript": "^5.5.2",
+    "vite": "^5.2.11",
+    "tailwindcss": "^4.0.0",
+    "postcss": "^8.4.41",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react": "^7.35.2",
+    "prettier": "^3.3.3"
+  }
+}
