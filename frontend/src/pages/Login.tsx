@@ -73,7 +73,7 @@ export default function Login() {
 
       {/* Lado direito — Formulário */}
       <div className="flex-1 flex items-center justify-center px-6 py-12 bg-neutral-50">
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-lg">
           {/* Logo mobile */}
           <div className="lg:hidden flex items-center gap-3 mb-10">
             <div className="w-12 h-12 rounded-xl bg-ifce-900 flex items-center justify-center">

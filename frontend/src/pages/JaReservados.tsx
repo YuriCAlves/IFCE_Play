@@ -8,7 +8,7 @@ import Select from '../components/ui/Select'
 import Input from '../components/ui/Input'
 import Modal from '../components/ui/Modal'
 import EmptyState from '../components/ui/EmptyState'
-import Badge from '../components/ui/Badge'
+// Badge import removed (unused)
 
 const weekDates = [
   '2026-05-11',

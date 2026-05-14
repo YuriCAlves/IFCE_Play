@@ -4,7 +4,7 @@ import Card from '../components/ui/Card'
 import Button from '../components/ui/Button'
 import Input from '../components/ui/Input'
 import Select from '../components/ui/Select'
-import { espacos, tipoEspacoLabels } from '../data/mockData'
+import { espacos } from '../data/mockData'
 import { solicitarReserva } from '../services/reservaService'
 
 interface FormData {
