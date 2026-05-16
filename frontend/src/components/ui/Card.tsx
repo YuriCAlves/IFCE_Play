@@ -42,6 +42,7 @@ export default function Card({
         }
         ${paddingClasses[padding]}
         ${className}
+        min-w-[260px] w-full
       `}
       onClick={onClick}
       onKeyDown={onClick ? handleKeyDown : undefined}

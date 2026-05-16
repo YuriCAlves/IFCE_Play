@@ -196,7 +196,7 @@ export default function Espacos() {
           description="Tente ajustar os filtros da sua busca." 
         />
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           {filteredData.map(espaco => (
             <Card key={espaco.id} className="flex flex-col h-full hover:shadow-card-hover transition-all">
               <div className="flex justify-between items-start mb-4">

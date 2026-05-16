@@ -54,7 +54,7 @@ export default function CalendarGrid({
   /**
    * Calcula a duração em horas de um slot
    */
-  const getSlotDuration = (data: string, hora: string, reserva: Reserva): number => {
+  const getSlotDuration = (_: string, hora: string, reserva: Reserva): number => {
     const inicio = parseInt(reserva.horaInicio.split(':')[0])
     const fim = parseInt(reserva.horaFim.split(':')[0])
     const slotHora = parseInt(hora.split(':')[0])

@@ -8,7 +8,7 @@ import Select from '../components/ui/Select'
 import Input from '../components/ui/Input'
 import Modal from '../components/ui/Modal'
 import EmptyState from '../components/ui/EmptyState'
-import Badge from '../components/ui/Badge'
+// Badge import removed (unused)
 
 const weekDates = [
   '2026-05-11',
@@ -175,10 +175,10 @@ export default function JaReservados() {
           />
         ) : (
           <div className="bg-white rounded-2xl border border-neutral-100 shadow-sm overflow-hidden overflow-x-auto">
-            <table className="w-full text-sm text-center min-w-[800px]">
+            <table className="w-full text-sm text-center table-fixed min-w-[700px]">
               <thead>
                 <tr className="bg-neutral-50/50 border-b border-neutral-100">
-                  <th className="w-24 px-4 py-4 text-neutral-400 font-semibold border-r border-neutral-100 uppercase tracking-wider text-xs">Horário</th>
+                  <th className="w-20 px-3 py-4 text-neutral-400 font-semibold border-r border-neutral-100 uppercase tracking-wider text-xs">Horário</th>
                   {diasSemana.map((dia, idx) => (
                     <th key={dia} className="px-4 py-4 font-semibold text-neutral-700">
                       <div>{dia}</div>
@@ -234,7 +234,7 @@ export default function JaReservados() {
 
       {/* Widget Agendamento Rápido (Apenas para Aluno/Prof) */}
       {perfil !== 'GESTOR' && (
-        <div className="w-full xl:w-80 shrink-0">
+        <div className="w-full xl:w-[340px] shrink-0">
           <div className="sticky top-28 bg-white p-6 rounded-2xl border border-neutral-100 shadow-sm">
             <h3 className="font-bold text-neutral-800 flex items-center gap-2 mb-1">
               Agendamento Rápido

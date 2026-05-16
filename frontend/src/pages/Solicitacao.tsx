@@ -4,7 +4,7 @@ import Card from '../components/ui/Card'
 import Button from '../components/ui/Button'
 import Input from '../components/ui/Input'
 import Select from '../components/ui/Select'
-import { espacos, tipoEspacoLabels } from '../data/mockData'
+import { espacos } from '../data/mockData'
 import { solicitarReserva } from '../services/reservaService'
 
 interface FormData {
@@ -32,7 +32,7 @@ export default function Solicitacao() {
   const [error, setError] = useState('')
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto pb-10">
+    <div className="space-y-6 max-w-5xl pb-10">
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-neutral-800">Nova Solicitação</h1>
