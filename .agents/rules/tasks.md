@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 🗄️ Módulo 1: Banco de Dados (PostgreSQL)
 A fundação do sistema será baseada em modelagem relacional forte com flexibilidade para metadados
 .
@@ -86,3 +90,6 @@ Implementar AuthContext para gerenciar a sessão localmente e redirecionamentos
 Configurar instância do Axios com interceptadores para envio e tratamento de Cookies.
 Implementar o TanStack Query para realizar o fetching, caching e sincronização em tempo real das requisições REST criadas no back-end
 .
+
+
+

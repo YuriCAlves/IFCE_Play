@@ -69,11 +69,11 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   /* ── Espaçamentos ────────────────────────────────────────── */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 48px;
+  --spacing-app-xs: 4px;
+  --spacing-app-sm: 8px;
+  --spacing-app-md: 16px;
+  --spacing-app-lg: 24px;
+  --spacing-app-xl: 48px;
 
   /* ── Sombras ─────────────────────────────────────────────── */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -172,8 +172,6 @@
    ═══════════════════════════════════════════════════════════ */
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 

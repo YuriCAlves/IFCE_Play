@@ -20,8 +20,8 @@ export default function Layout() {
       <div
         className={`
           flex-1 min-w-0 flex flex-col
-          transition-[padding] duration-300 ease-out
-          ${sidebarOpen ? 'lg:pl-64' : 'lg:pl-20'}
+          transition-[margin] duration-300 ease-out
+          ${sidebarOpen ? 'lg:ml-64' : 'lg:ml-20'}
         `}
       >
         <Topbar onMenuToggle={toggleSidebar} />
